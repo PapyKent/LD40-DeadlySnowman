@@ -6,11 +6,16 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
 	public float timer = 0;
-	float ballSize = 1;
-	public int ballContent = 0;
+	public float ballSize = 1;
+	public float ballContent = 0;
 	float startTimer=0;
 	float endTimer=0;
 	bool gameOver = false;
+
+	public GameObject start;
+	public GameObject end;
+
+	public GameObject player;
 
 
 	// Use this for initialization
@@ -20,16 +25,35 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
-		//end of the game
-		if (Input.GetKeyUp ("space") && !gameOver) {
-			endTimer = Time.time;
-			timer = (endTimer - startTimer);
-			print ("Game over! Time is :" + timer.ToString() + "sec");
-			float score = timer + ballSize + ballContent;
-			print ("Score is :" + score + "sec");
-			gameOver = true;
+		if(Input.GetKeyUp("space")){
+			restartTheGame();
 		}
 	}
+
+
+
+	public void updateContent(float contentValue){
+		ballContent += contentValue;
+	}
+
+	public void updateSize(float sizeMultiplier){
+		ballSize *= sizeMultiplier;
+	}
+
+	public void endTheGame(){
+		endTimer = Time.time;
+		timer = (endTimer - startTimer);
+		print ("Game over! Time is :" + timer.ToString() + "sec");
+		float score = timer + ballSize + ballContent;
+		print ("Score is :" + score + "sec");
+		gameOver = true;
+	}
+
+	public void restartTheGame(){
+		//reset param + positions
+
+		player.transform.position = start.transform.position;
+		gameOver = false;
+	}
+
 }
