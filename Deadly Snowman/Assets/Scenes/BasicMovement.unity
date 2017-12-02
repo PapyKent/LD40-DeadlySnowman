@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  growthRate: 1
+  growthRate: 1.1
 --- !u!54 &804585961
 Rigidbody:
   m_ObjectHideFlags: 0
