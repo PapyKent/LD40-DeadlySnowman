@@ -10,17 +10,29 @@ public class GameManager : MonoBehaviour {
 	public float ballContent = 0;
 	float startTimer=0;
 	float endTimer=0;
-	bool gameOver = false;
+	public bool gameOver = false;
 
 	public GameObject start;
 	public GameObject end;
 
 	public GameObject player;
 
+	public Text scoreUI;
+	public Text sizeUI;
+	public Text itemsUI;
+
+	bool isCoroutineActive = false;
+
+	public float refreshDelayUI = 1.0f;
+
+
+
+	public GameObject mashingEvent;
 
 	// Use this for initialization
 	void Start () {
 		startTimer = Time.time;
+		StartCoroutine(RefreshUI());
 	}
 	
 	// Update is called once per frame
@@ -28,9 +40,50 @@ public class GameManager : MonoBehaviour {
 		if(Input.GetKeyUp("space")){
 			restartTheGame();
 		}
+
+
+		if(Input.GetKeyUp(KeyCode.A)){
+			changeStateMashing ();
+		}
+
+
+	
+	}
+
+	void changeStateMashing(){
+		mashingEvent.SetActive (!mashingEvent.activeSelf);
 	}
 
 
+	void desactivateMashing(){
+		mashingEvent.SetActive (false);
+	}
+
+
+	void updateUIValues(){
+		int scoreTMP = (int)getScore (); 
+		scoreUI.text = scoreTMP.ToString();
+		sizeUI.text = ballSize.ToString();
+		itemsUI.text = ballContent.ToString();
+	}
+
+
+	IEnumerator RefreshUI() {
+		isCoroutineActive = true;
+		while (!gameOver) {
+			updateUIValues ();
+			yield return new WaitForSeconds(refreshDelayUI);
+		}
+		isCoroutineActive = false;
+	}
+
+
+	float getScore(){
+		endTimer = Time.time;
+		timer = (endTimer - startTimer);
+		float score = timer*10 + ballSize*5 + ballContent*300;
+		return score;
+	}
 
 	public void updateContent(float contentValue){
 		ballContent += contentValue;
@@ -40,13 +93,11 @@ public class GameManager : MonoBehaviour {
 		ballSize *= sizeMultiplier;
 	}
 
-	public void endTheGame(){
-		endTimer = Time.time;
-		timer = (endTimer - startTimer);
-		print ("Game over! Time is :" + timer.ToString() + "sec");
-		float score = timer + ballSize + ballContent;
-		print ("Score is :" + score + "sec");
+	public void endTheGame(){		
 		gameOver = true;
+		print ("Game over! Time is :" + timer.ToString() + "sec");
+		print ("Score is :" + getScore());
+
 	}
 
 	public void restartTheGame(){
