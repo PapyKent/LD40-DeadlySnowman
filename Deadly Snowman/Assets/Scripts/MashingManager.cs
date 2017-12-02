@@ -6,37 +6,57 @@ using UnityEngine.UI;
 
 public class MashingManager : MonoBehaviour {
 
-
 	public bool gIsDown;
 	public float rollingFaceLimit;
-	public float energyGain;
-	public GameObject reloadingUI;
+	public int gain;
+	public GameObject mashingUI;
 	private Image key1;
 	private Image key2;
 	public Color lowAlpha = new Color(0.0f, 1.0f, 0.0f, 0.25f);
 	public Color highAlpha = new Color(0.0f, 1.0f, 0.0f, 1.0f);
 
+	int currentValue = 0;
+	public int valueToReach = 500;
 
+
+	public GameManager gm;
 	// Use this for initialization
 	void Start ()
 	{
+		
+	}
+	void OnEnable(){
 		gIsDown = false;
 		InvokeRepeating("CheckRollingFaceRate", 0.0f, rollingFaceLimit);
-		key1 = reloadingUI.transform.Find("Key1").GetComponent<Image>();
-		key2 = reloadingUI.transform.Find("Key2").GetComponent<Image>();
+		key1 = mashingUI.transform.Find("Key1").GetComponent<Image>();
+		key2 = mashingUI.transform.Find("Key2").GetComponent<Image>();
 		key1.color = highAlpha;
 		key2.color = lowAlpha;
+		currentValue = 0;
 	}
+
+
+
 
 	// Update is called once per frame
 	void Update ()
 	{
+		if (currentValue >= valueToReach && gm.eventOccuring == true) {
+			print ("this is over!");
+			currentValue = 0;
+			gm.eventOccuring = false;
+			gm.desactivateVSAnim ();
+			mashingUI.SetActive (false);
+		}
+
+
 		if (!gIsDown && Input.GetKeyDown(KeyCode.Alpha1))
 		{
 			//Terminator.GetTerminator().isRecharging = true;
 			gIsDown = true;
 			key1.color = lowAlpha;
 			key2.color = highAlpha;
+			currentValue += gain;
 		}
 		else if (gIsDown && Input.GetKeyDown(KeyCode.Alpha3))
 		{
@@ -44,6 +64,7 @@ public class MashingManager : MonoBehaviour {
 			//this.gameObject.GetComponent<Terminator>().energy.CurrentValue += energyGain;
 			key1.color = highAlpha;
 			key2.color = lowAlpha;
+			currentValue += gain;
 		}
 	}
 
