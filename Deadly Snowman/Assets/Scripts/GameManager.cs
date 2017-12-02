@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour {
 	float endTimer=0;
 	bool gameOver = false;
 
+	public GameObject start;
+	public GameObject end;
+
+	public GameObject player;
+
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +25,9 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		if(Input.GetKeyUp("space")){
+			restartTheGame();
+		}
 	}
 
 
@@ -44,6 +51,8 @@ public class GameManager : MonoBehaviour {
 
 	public void restartTheGame(){
 		//reset param + positions
+
+		player.transform.position = start.transform.position;
 		gameOver = false;
 	}
 
