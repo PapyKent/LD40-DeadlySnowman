@@ -8,7 +8,9 @@ public class PlayerController : MonoBehaviour {
 	public float HorizontalSensitivity; // how fast the snowball moves left to right
 	public float GrowthRate; // how fast the snowball grows to its target size
 	public float MassFactor; // How much does the mass increase per unit of scale (size)
+	public GameObject BodyPart;
 
+	/* Private variables */
 	private Rigidbody rb;
 
 	/* Variables used for changing the size of the snowball. */
@@ -27,12 +29,22 @@ public class PlayerController : MonoBehaviour {
 			ChangeSize (transform.localScale.y + 2f);
 		if (Input.GetKeyDown(KeyCode.Z))
 			ChangeSize (transform.localScale.y - 2f);
+		// For testing purposes only, allows you to stick body parts using the C key.
+		if (Input.GetKeyDown (KeyCode.C))
+			StickRandomBodyPart ();
 	}
 
 	/* Changes the size of the snowball.
 	 * parameters: scale - the new scale of the snowball. */
 	public void ChangeSize(float scale) {
 		targetScale = Mathf.Clamp(scale, 1, 200);
+	}
+
+	public void StickRandomBodyPart()
+	{
+		GameObject temp = Instantiate (BodyPart, gameObject.transform);
+		temp.transform.position = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y - (gameObject.transform.localScale.y / 2f), gameObject.transform.position.z);
+		temp.transform.Rotate (Vector3.zero - gameObject.transform.eulerAngles, Space.World);
 	}
 	
 	void FixedUpdate () {
