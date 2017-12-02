@@ -4,42 +4,58 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	public float speed;
-	public float growthRate;
+	/* Public variables */
+	public float HorizontalSensitivity; // how fast the snowball moves left to right
+	public float GrowthRate; // how fast the snowball grows to its target size
+	public float MassFactor; // How much does the mass increase per unit of scale (size)
+
 	private Rigidbody rb;
 
+	/* Variables used for changing the size of the snowball. */
 	private float targetScale = -1f;
 
-	void Start () {
+	void Start ()
+	{
 		rb = GetComponent <Rigidbody> ();
 		targetScale = transform.localScale.y;
 	}
 
-	void Update() {
+	void Update()
+	{
+		// For testing purposes only, allows you to change the size of the snowball using the X and Z keys.
 		if (Input.GetKeyDown(KeyCode.X))
-			changeScale (transform.localScale.y + 2f);
+			ChangeSize (transform.localScale.y + 2f);
 		if (Input.GetKeyDown(KeyCode.Z))
-			changeScale (transform.localScale.y - 2f);
+			ChangeSize (transform.localScale.y - 2f);
+	}
+
+	/* Changes the size of the snowball.
+	 * parameters: scale - the new scale of the snowball. */
+	public void ChangeSize(float scale) {
+		targetScale = Mathf.Clamp(scale, 1, 200);
 	}
 	
 	void FixedUpdate () {
-		if (transform.localScale.y != targetScale) {
+		// Updates the size of the snowball
+		if (transform.localScale.y != targetScale)
+		{
 			float newValue = 0f;
-			if (transform.localScale.y < targetScale) {
-				newValue = Mathf.Clamp (transform.localScale.y + growthRate, transform.localScale.y, targetScale);
-			} else {
-				newValue = Mathf.Clamp (transform.localScale.y - growthRate, targetScale, transform.localScale.y);
+			if (transform.localScale.y < targetScale)
+			{
+				newValue = Mathf.Clamp (transform.localScale.y + GrowthRate, transform.localScale.y, targetScale);
+			} else
+			{
+				newValue = Mathf.Clamp (transform.localScale.y - GrowthRate, targetScale, transform.localScale.y);
 			}
 			transform.localScale = new Vector3 (newValue, newValue, newValue);
 		}
 
+		// Updates the movement of the snowball from left to right
 		float moveHorizontal = Input.GetAxis ("Horizontal");
-		Vector3 force = new Vector3 (moveHorizontal * speed, 0f, 0f);
+		Vector3 force = new Vector3 (moveHorizontal * HorizontalSensitivity, 0f, 0f);
 		rb.AddForce (force);
-	}
 
-	/* Changes the size of the snowball. */
-	private void changeScale(float scale) {
-		targetScale = scale;
+		// Updates the mass of the snowball
+		rb.mass = 1 + transform.localScale.y * MassFactor;
 	}
 }
