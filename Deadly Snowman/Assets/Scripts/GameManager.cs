@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour {
 
 	public float refreshDelayUI = 1.0f;
 
+
+
+	public GameObject mashingEvent;
+
 	// Use this for initialization
 	void Start () {
 		startTimer = Time.time;
@@ -38,7 +42,21 @@ public class GameManager : MonoBehaviour {
 		}
 
 
+		if(Input.GetKeyUp(KeyCode.A)){
+			changeStateMashing ();
+		}
+
+
 	
+	}
+
+	void changeStateMashing(){
+		mashingEvent.SetActive (!mashingEvent.activeSelf);
+	}
+
+
+	void desactivateMashing(){
+		mashingEvent.SetActive (false);
 	}
 
 
