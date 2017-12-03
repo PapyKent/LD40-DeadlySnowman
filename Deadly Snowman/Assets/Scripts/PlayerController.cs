@@ -51,7 +51,11 @@ public class PlayerController : MonoBehaviour {
 				ChangeSize (transform.localScale.y - 2f);
 			// For testing purposes only, allows you to stick body parts using the C key.
 			if (Input.GetKeyDown (KeyCode.D))
+<<<<<<< HEAD
+				Damage ();
+=======
 				Damage (3f);
+>>>>>>> 2247eeaee0ba5234231053af4169973b46b2b33b
 		}
 	}
 
@@ -81,10 +85,17 @@ public class PlayerController : MonoBehaviour {
 		scaleAdded.Add (gameObject.transform.localScale.y);
 	}
 
+<<<<<<< HEAD
+	public void Damage()
+	{
+		Collider thisCollider = gameObject.GetComponent <Collider> ();
+		ChangeSize (gameObject.transform.localScale.y - DamageValue);
+=======
 	public void Damage(float value)
 	{
 		Collider thisCollider = gameObject.GetComponent <Collider> ();
 		ChangeSize (targetScale - value);
+>>>>>>> 2247eeaee0ba5234231053af4169973b46b2b33b
 		float currentScale = gameObject.transform.localScale.y;
 		for (int i = 0; i < bodyParts.Count; i++) {
 			if ((float)scaleAdded [i] > currentScale) {
@@ -171,11 +182,22 @@ public class PlayerController : MonoBehaviour {
 			gm.updateSize (item.sizeMultiplier);
 			gm.updateContent(item.contentValue);
 
+<<<<<<< HEAD
+			if (!item.isCollided()) {
+				item.TriggerCollide ();
+				ChangeSize (targetScale + item.sizeMultiplier);
+				StickRandomBodyPart (item.bodyPart);
+			}
+
+=======
+>>>>>>> 2247eeaee0ba5234231053af4169973b46b2b33b
 			if (item.gameOver) {
 				gm.endTheGame ();
 			} else if (item.triggerVS) {
 				gm.startCoVS ();
 			}
+<<<<<<< HEAD
+=======
 			else if (!item.isCollided()) {
 				item.TriggerCollide ();
 				rb.velocity *= item.speedMultiplier;
@@ -188,6 +210,7 @@ public class PlayerController : MonoBehaviour {
 
 
 			}
+>>>>>>> 2247eeaee0ba5234231053af4169973b46b2b33b
 		}
 
 

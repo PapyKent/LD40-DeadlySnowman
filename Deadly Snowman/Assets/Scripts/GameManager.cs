@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour {
 	public Text sizeUI;
 	public Text itemsUI;
 
+	public Text finalScoreUI;
+	public GameObject GOScreen;
+
 	bool isCoroutineActive = false;
 
 	public float refreshDelayUI = 1.0f;
@@ -49,9 +52,7 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		if(Input.GetKeyUp("space")){
 			restartTheGame();
-		}
-					
-	
+		}			
 	}
 
 
@@ -134,16 +135,19 @@ public class GameManager : MonoBehaviour {
 
 	public void endTheGame(){		
 		gameOver = true;
-		print ("Game over! Time is :" + timer.ToString() + "sec");
-		print ("Score is : " + timer*10 + " "+ ballSize*5 +" "+ ballContent*300 + " " + getScore());
+		GOScreen.SetActive (true);
+		float score = timer * 10 +  ballSize * 5 +  ballContent * 300;
+		finalScoreUI.text = score.ToString();
 
 	}
 
 	public void restartTheGame(){
-		//reset param + positions
-
 		player.transform.position = start.transform.position;
 		gameOver = false;
+		startTimer = Time.time;
+		ballSize = 1;
+		ballContent = 0;
+		//repop everything
 	}
 
 	/* Pauses the main game. */
