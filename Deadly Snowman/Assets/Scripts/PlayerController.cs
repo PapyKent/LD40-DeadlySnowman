@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour {
 	 * parameters: scale - the new scale of the snowball. */
 	public void ChangeSize(float scale) {
 		targetScale = Mathf.Clamp(scale, 1, 200);
+
 	}
 
 	public void StickRandomBodyPart(GameObject bodyPart)
@@ -130,7 +131,7 @@ public class PlayerController : MonoBehaviour {
 			// Grows the snowball (from rolling)\
 			//Debug.Log("VEL: " + rb.velocity);
 			if (Mathf.Abs(rb.velocity.x) > 1.5 || Mathf.Abs(rb.velocity.z) > 1.5) {
-				ChangeSize (transform.localScale.y + (RollGrowRate));
+				ChangeSize (targetScale + (RollGrowRate));
 			}
 
 			// Updates the mass of the snowball
@@ -172,7 +173,7 @@ public class PlayerController : MonoBehaviour {
 
 			if (!item.isCollided()) {
 				item.TriggerCollide ();
-				ChangeSize (gameObject.transform.localScale.y + item.sizeMultiplier);
+				ChangeSize (targetScale + item.sizeMultiplier);
 				StickRandomBodyPart (item.bodyPart);
 			}
 
