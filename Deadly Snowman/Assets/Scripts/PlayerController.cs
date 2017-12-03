@@ -11,14 +11,16 @@ public class PlayerController : MonoBehaviour {
 	public float MassFactor; // How much does the mass increase per unit of scale (size)
 	public float[] SizeBoundaries; // the scale values that cause the camera to go to second angle ([0]) and third angle ([1])
 	public float RollGrowRate; // how much of its current size does the ball grow per frame?
-	public GameObject BodyPart;
+	public float DamageValue;
 	public GameObject Camera;
+	public GameManager gm;
 
 	/* Private variables */
 	private Rigidbody rb;
 	private GameObject ballShadow;
 	private ArrayList bodyParts;
 	private ArrayList rotationAdded;
+	private ArrayList scaleAdded;
 
 	/* Variables used for changing the size of the snowball. */
 	private float targetScale = -1f;
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour {
 		targetScale = transform.localScale.y;
 		bodyParts = new ArrayList ();
 		rotationAdded = new ArrayList ();
+		scaleAdded = new ArrayList ();
 		ballShadow = new GameObject ("PlayerShadow");
 		ballShadow.transform.position = transform.position;
 		state = STATE_GAMEPLAY;
@@ -47,8 +50,9 @@ public class PlayerController : MonoBehaviour {
 			if (Input.GetKeyDown (KeyCode.Z))
 				ChangeSize (transform.localScale.y - 2f);
 			// For testing purposes only, allows you to stick body parts using the C key.
-			if (Input.GetKeyDown (KeyCode.C))
-				StickRandomBodyPart ();
+			if (Input.GetKeyDown (KeyCode.D)) {
+				Damage (3f);
+			}
 		}
 	}
 
@@ -56,14 +60,15 @@ public class PlayerController : MonoBehaviour {
 	 * parameters: scale - the new scale of the snowball. */
 	public void ChangeSize(float scale) {
 		targetScale = Mathf.Clamp(scale, 1, 200);
+
 	}
 
-	public void StickRandomBodyPart()
+	public void StickRandomBodyPart(GameObject bodyPart)
 	{
 		//GameObject temp = Instantiate (BodyPart, gameObject.transform);
 		//temp.transform.position = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y - (gameObject.transform.localScale.y / 2f), gameObject.transform.position.z);
 		//temp.transform.Rotate (Vector3.zero - gameObject.transform.eulerAngles, Space.Self);
-		GameObject temp = Instantiate(BodyPart);
+		GameObject temp = Instantiate(bodyPart);
 		Quaternion save = ballShadow.transform.rotation;
 		ballShadow.transform.rotation = Random.rotation;
 
@@ -74,6 +79,36 @@ public class PlayerController : MonoBehaviour {
 		bodyParts.Add (temp);
 		rotationAdded.Add (ballShadow.transform.rotation);
 		ballShadow.transform.rotation = save;
+		scaleAdded.Add (gameObject.transform.localScale.y);
+	}
+
+
+	public void Damage(float value)
+	{
+		Collider thisCollider = gameObject.GetComponent <Collider> ();
+		ChangeSize (targetScale - value);
+		float currentScale = gameObject.transform.localScale.y;
+		for (int i = 0; i < bodyParts.Count; i++) {
+			if ((float)scaleAdded [i] > currentScale) {
+				//Destroy ((GameObject)bodyParts [i], 0f);
+				GameObject part = (GameObject)bodyParts[i];
+				part.transform.parent = null;
+				part.transform.position = ballShadow.transform.position;
+				part.transform.rotation = Random.rotation;
+
+				Collider partC = part.GetComponent <Collider> ();
+				Physics.IgnoreCollision (partC, thisCollider);
+
+				Rigidbody prb = part.AddComponent <Rigidbody> ();
+				Vector3 force = new Vector3 (Random.Range(-200f, 200f), Random.Range(800f, 1200f), Random.Range(-200f, 200f));
+				prb.AddForce (force);
+				Destroy (part, 20f);
+				bodyParts.RemoveAt (i);
+				scaleAdded.RemoveAt (i);
+				rotationAdded.RemoveAt (i);
+				i--;
+			}
+		}
 	}
 	
 	void FixedUpdate () {
@@ -98,7 +133,7 @@ public class PlayerController : MonoBehaviour {
 			// Grows the snowball (from rolling)\
 			//Debug.Log("VEL: " + rb.velocity);
 			if (Mathf.Abs(rb.velocity.x) > 1.5 || Mathf.Abs(rb.velocity.z) > 1.5) {
-				ChangeSize (transform.localScale.y + (RollGrowRate));
+				ChangeSize (targetScale + (RollGrowRate));
 			}
 
 			// Updates the mass of the snowball
@@ -128,5 +163,35 @@ public class PlayerController : MonoBehaviour {
 	public void ChangeState(int state)
 	{
 		this.state = state;
+	}
+
+
+	void OnTriggerEnter(Collider other) {
+		print ("collide with " + other.name);
+		if (other.GetComponent<Item> ()) {
+			Item item = other.GetComponent<Item> ();
+			gm.updateSize (item.sizeAdder);
+			gm.updateContent(item.contentValue);
+
+			if (item.gameOver) {
+				gm.endTheGame ();
+			} else if (item.triggerVS) {
+				gm.startCoVS ();
+			}
+			else if (!item.isCollided()) {
+				item.TriggerCollide ();
+				rb.velocity *= item.speedMultiplier;
+				if (item.sizeAdder > 0) {
+					ChangeSize (targetScale + item.sizeAdder);
+					StickRandomBodyPart (item.bodyPart);
+				} else {
+					Damage (item.sizeAdder);
+				}
+
+
+			}
+		}
+
+
 	}
 }
