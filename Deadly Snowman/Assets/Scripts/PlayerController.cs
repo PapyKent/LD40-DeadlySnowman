@@ -178,6 +178,7 @@ public class PlayerController : MonoBehaviour {
 			}
 			else if (!item.isCollided()) {
 				item.TriggerCollide ();
+				rb.velocity *= item.speedMultiplier;
 				if (item.sizeMultiplier > 0) {
 					ChangeSize (targetScale + item.sizeMultiplier);
 					StickRandomBodyPart (item.bodyPart);
