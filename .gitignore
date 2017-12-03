@@ -34,3 +34,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 Deadly Snowman/Library/*
+Deadly Snowman/Library/assetDatabase3
+*.mdb
+Deadly Snowman/Library/assetDatabase3
+*.mdb
