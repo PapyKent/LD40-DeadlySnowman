@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour {
 	public float[] SizeBoundaries; // the scale values that cause the camera to go to second angle ([0]) and third angle ([1])
 	public float RollGrowRate; // how much of its current size does the ball grow per frame?
 	public float DamageValue;
-	public GameObject BodyPart;
 	public GameObject Camera;
+	public GameManager gm;
 
 	/* Private variables */
 	private Rigidbody rb;
@@ -50,8 +50,6 @@ public class PlayerController : MonoBehaviour {
 			if (Input.GetKeyDown (KeyCode.Z))
 				ChangeSize (transform.localScale.y - 2f);
 			// For testing purposes only, allows you to stick body parts using the C key.
-			if (Input.GetKeyDown (KeyCode.C))
-				StickRandomBodyPart ();
 			if (Input.GetKeyDown (KeyCode.D))
 				Damage ();
 		}
@@ -63,12 +61,12 @@ public class PlayerController : MonoBehaviour {
 		targetScale = Mathf.Clamp(scale, 1, 200);
 	}
 
-	public void StickRandomBodyPart()
+	public void StickRandomBodyPart(GameObject bodyPart)
 	{
 		//GameObject temp = Instantiate (BodyPart, gameObject.transform);
 		//temp.transform.position = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y - (gameObject.transform.localScale.y / 2f), gameObject.transform.position.z);
 		//temp.transform.Rotate (Vector3.zero - gameObject.transform.eulerAngles, Space.Self);
-		GameObject temp = Instantiate(BodyPart);
+		GameObject temp = Instantiate(bodyPart);
 		Quaternion save = ballShadow.transform.rotation;
 		ballShadow.transform.rotation = Random.rotation;
 
@@ -99,7 +97,7 @@ public class PlayerController : MonoBehaviour {
 				Physics.IgnoreCollision (partC, thisCollider);
 
 				Rigidbody prb = part.AddComponent <Rigidbody> ();
-				Vector3 force = new Vector3 (Random.Range(-200f, 200f), 600f, Random.Range(-200f, 200f));
+				Vector3 force = new Vector3 (Random.Range(-200f, 200f), Random.Range(800f, 1200f), Random.Range(-200f, 200f));
 				prb.AddForce (force);
 				Destroy (part, 20f);
 				bodyParts.RemoveAt (i);
@@ -162,5 +160,29 @@ public class PlayerController : MonoBehaviour {
 	public void ChangeState(int state)
 	{
 		this.state = state;
+	}
+
+
+	void OnTriggerEnter(Collider other) {
+		print ("collide with " + other.name);
+		if (other.GetComponent<Item> ()) {
+			Item item = other.GetComponent<Item> ();
+			gm.updateSize (item.sizeMultiplier);
+			gm.updateContent(item.contentValue);
+
+			if (!item.isCollided()) {
+				item.TriggerCollide ();
+				ChangeSize (gameObject.transform.localScale.y + item.sizeMultiplier);
+				StickRandomBodyPart (item.bodyPart);
+			}
+
+			if (item.gameOver) {
+				gm.endTheGame ();
+			} else if (item.triggerVS) {
+				gm.startCoVS ();
+			}
+		}
+
+
 	}
 }
