@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour {
 
 	/* Private variables */
 	private Rigidbody rb;
+	private GameObject ballShadow;
+	private ArrayList bodyParts;
+	private ArrayList rotationAdded;
 
 	/* Variables used for changing the size of the snowball. */
 	private float targetScale = -1f;
@@ -23,6 +26,10 @@ public class PlayerController : MonoBehaviour {
 	{
 		rb = GetComponent <Rigidbody> ();
 		targetScale = transform.localScale.y;
+		bodyParts = new ArrayList ();
+		rotationAdded = new ArrayList ();
+		ballShadow = new GameObject ("PlayerShadow");
+		ballShadow.transform.position = transform.position;
 	}
 
 	void Update()
@@ -45,12 +52,15 @@ public class PlayerController : MonoBehaviour {
 
 	public void StickRandomBodyPart()
 	{
-		GameObject temp = Instantiate (BodyPart, gameObject.transform);
-		//temp.transform.localPosition = new Vector3 (0f, 2f, 0f);
-		//temp.transform.localRotation = Random.rotation;
-		temp.transform.position = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y - (gameObject.transform.localScale.y / 2f), gameObject.transform.position.z);
-		temp.transform.Rotate (Vector3.zero - gameObject.transform.eulerAngles, Space.Self);
-
+		//GameObject temp = Instantiate (BodyPart, gameObject.transform);
+		//temp.transform.position = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y - (gameObject.transform.localScale.y / 2f), gameObject.transform.position.z);
+		//temp.transform.Rotate (Vector3.zero - gameObject.transform.eulerAngles, Space.Self);
+		GameObject temp = Instantiate(BodyPart);
+		temp.transform.position = ballShadow.transform.position + new Vector3(0f, (gameObject.transform.localScale.y / 2), 0f);
+		temp.transform.SetParent (ballShadow.transform);
+		//temp.transform.localPosition = new Vector3(0f, (gameObject.transform.localScale.y / 2), 0f);
+		bodyParts.Add (temp);
+		rotationAdded.Add (ballShadow.transform.rotation);
 	}
 	
 	void FixedUpdate () {
@@ -86,6 +96,17 @@ public class PlayerController : MonoBehaviour {
 				Camera.GetComponent <CameraController> ().ChangeAngle (i);
 				break;
 			}
+		}
+
+		// Places the ball shadow in the same location as the ball
+		ballShadow.transform.position = transform.position;
+		ballShadow.transform.rotation = transform.rotation;
+		for (int i = 0; i < bodyParts.Count; i++) {
+			GameObject curr = (GameObject)bodyParts [i];
+			Quaternion temp = ballShadow.transform.rotation;
+			ballShadow.transform.rotation = (Quaternion)rotationAdded [i];
+			curr.transform.position = ballShadow.transform.position + new Vector3(0f, (gameObject.transform.localScale.y / 2), 0f);
+			ballShadow.transform.rotation = temp;
 		}
 	}
 }
