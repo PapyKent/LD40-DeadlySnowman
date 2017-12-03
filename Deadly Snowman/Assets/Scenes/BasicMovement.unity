@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplier: 1
-  sizeMultiplier: 3
+  sizeMultiplier: 10
   contentValue: 1
   bodyPart: {fileID: 1000067249589028, guid: 08ae3436428680145a7f11b55a223405, type: 2}
   gameOver: 0

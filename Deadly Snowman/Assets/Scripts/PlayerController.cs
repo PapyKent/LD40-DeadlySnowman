@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour {
 				ChangeSize (transform.localScale.y - 2f);
 			// For testing purposes only, allows you to stick body parts using the C key.
 			if (Input.GetKeyDown (KeyCode.D))
-				Damage ();
+				Damage (3f);
 		}
 	}
 
@@ -81,10 +81,10 @@ public class PlayerController : MonoBehaviour {
 		scaleAdded.Add (gameObject.transform.localScale.y);
 	}
 
-	public void Damage()
+	public void Damage(float value)
 	{
 		Collider thisCollider = gameObject.GetComponent <Collider> ();
-		ChangeSize (gameObject.transform.localScale.y - DamageValue);
+		ChangeSize (targetScale - value);
 		float currentScale = gameObject.transform.localScale.y;
 		for (int i = 0; i < bodyParts.Count; i++) {
 			if ((float)scaleAdded [i] > currentScale) {
@@ -171,16 +171,21 @@ public class PlayerController : MonoBehaviour {
 			gm.updateSize (item.sizeMultiplier);
 			gm.updateContent(item.contentValue);
 
-			if (!item.isCollided()) {
-				item.TriggerCollide ();
-				ChangeSize (targetScale + item.sizeMultiplier);
-				StickRandomBodyPart (item.bodyPart);
-			}
-
 			if (item.gameOver) {
 				gm.endTheGame ();
 			} else if (item.triggerVS) {
 				gm.startCoVS ();
+			}
+			else if (!item.isCollided()) {
+				item.TriggerCollide ();
+				if (item.sizeMultiplier > 0) {
+					ChangeSize (targetScale + item.sizeMultiplier);
+					StickRandomBodyPart (item.bodyPart);
+				} else {
+					Damage (item.sizeMultiplier);
+				}
+
+
 			}
 		}
 
