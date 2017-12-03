@@ -72,8 +72,7 @@ public class PlayerController : MonoBehaviour {
 		Quaternion save = ballShadow.transform.rotation;
 		ballShadow.transform.rotation = Random.rotation;
 
-
-		temp.transform.position = ballShadow.transform.position + new Vector3(0f, (gameObject.transform.localScale.y / 2), 0f);
+        
 		temp.transform.SetParent (ballShadow.transform);
 		//temp.transform.localPosition = new Vector3(0f, (gameObject.transform.localScale.y / 2), 0f);
 		bodyParts.Add (temp);
