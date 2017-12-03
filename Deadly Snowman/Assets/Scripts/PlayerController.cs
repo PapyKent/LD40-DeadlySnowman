@@ -43,8 +43,11 @@ public class PlayerController : MonoBehaviour {
 	public void StickRandomBodyPart()
 	{
 		GameObject temp = Instantiate (BodyPart, gameObject.transform);
+		//temp.transform.localPosition = new Vector3 (0f, 2f, 0f);
+		//temp.transform.localRotation = Random.rotation;
 		temp.transform.position = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y - (gameObject.transform.localScale.y / 2f), gameObject.transform.position.z);
-		temp.transform.Rotate (Vector3.zero - gameObject.transform.eulerAngles, Space.World);
+		temp.transform.Rotate (Vector3.zero - gameObject.transform.eulerAngles, Space.Self);
+
 	}
 	
 	void FixedUpdate () {
