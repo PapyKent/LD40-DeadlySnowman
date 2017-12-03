@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour {
 		print ("collide with " + other.name);
 		if (other.GetComponent<Item> ()) {
 			Item item = other.GetComponent<Item> ();
-			gm.updateSize (item.scoreUpdate);
+			gm.updateSize (item.sizeMultiplier);
 			gm.updateContent(item.contentValue);
 
 			if (item.gameOver) {

@@ -114,11 +114,13 @@ public class GameManager : MonoBehaviour {
 	public void updateSize(float sizeMultiplier){
 		ballSize *= sizeMultiplier;
 	}
+		
+
 
 	public void endTheGame(){		
 		gameOver = true;
 		print ("Game over! Time is :" + timer.ToString() + "sec");
-		print ("Score is :" + getScore());
+		print ("Score is : " + timer*10 + " "+ ballSize*5 +" "+ ballContent*300 + " " + getScore());
 
 	}
 

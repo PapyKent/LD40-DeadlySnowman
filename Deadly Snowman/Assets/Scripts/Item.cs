@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Item : MonoBehaviour {
 	
-	public float scoreUpdate = 0;
-	public float speedMultiplier = 0;
-
+	public float speedMultiplier = 1;
+	public float sizeMultiplier = 1;
 	public float contentValue = 1;
 
 	public bool gameOver = false;
