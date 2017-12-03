@@ -34,8 +34,7 @@ public class MashingManager : MonoBehaviour {
 		key2.color = lowAlpha;
 		currentValue = 0;
 	}
-
-
+		
 
 
 	// Update is called once per frame
@@ -45,7 +44,6 @@ public class MashingManager : MonoBehaviour {
 			print ("this is over!");
 			currentValue = 0;
 			gm.eventOccuring = false;
-			gm.desactivateVSAnim ();
 			mashingUI.SetActive (false);
 		}
 

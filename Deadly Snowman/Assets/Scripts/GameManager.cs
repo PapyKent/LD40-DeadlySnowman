@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour {
 
 	public bool eventOccuring = false;
 
+	public bool isVSAnimPlaying = false;
+
 	public GameObject mashingEvent;
 
 	// Use this for initialization
@@ -45,17 +47,13 @@ public class GameManager : MonoBehaviour {
 		}
 
 
-		if(Input.GetKeyUp(KeyCode.A)){
-			activateVSAnim ();
-			eventOccuring = true;
-			changeStateMashing ();
+		if(Input.GetKeyUp(KeyCode.A) && !isVSAnimPlaying){			
+			StartCoroutine(launchVS());
 		}
-
-
+			
 	
 	}
-
-
+		
 	public void activateVSAnim(){
 		vsAnimator.SetTrigger("enterVS");
 	}
@@ -89,6 +87,16 @@ public class GameManager : MonoBehaviour {
 			yield return new WaitForSeconds(refreshDelayUI);
 		}
 		isCoroutineActive = false;
+	}
+
+	IEnumerator launchVS() {
+		isVSAnimPlaying = true;
+		activateVSAnim ();
+		yield return new WaitForSeconds(1.5f);
+		desactivateVSAnim ();
+		isVSAnimPlaying = false;
+		eventOccuring = true;
+		changeStateMashing ();
 	}
 
 
