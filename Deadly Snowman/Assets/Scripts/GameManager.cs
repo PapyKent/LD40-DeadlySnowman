@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+
+	public Animator vsAnimator;
 	public float timer = 0;
 	public float ballSize = 1;
 	public float ballContent = 0;
@@ -25,7 +27,9 @@ public class GameManager : MonoBehaviour {
 
 	public float refreshDelayUI = 1.0f;
 
+	public bool eventOccuring = false;
 
+	public bool isVSAnimPlaying = false;
 
 	public GameObject mashingEvent;
 
@@ -34,7 +38,8 @@ public class GameManager : MonoBehaviour {
 		startTimer = Time.time;
 		StartCoroutine(RefreshUI());
 	}
-	
+
+
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyUp("space")){
@@ -42,12 +47,19 @@ public class GameManager : MonoBehaviour {
 		}
 
 
-		if(Input.GetKeyUp(KeyCode.A)){
-			changeStateMashing ();
+		if(Input.GetKeyUp(KeyCode.A) && !isVSAnimPlaying){			
+			StartCoroutine(launchVS());
 		}
-
-
+			
 	
+	}
+		
+	public void activateVSAnim(){
+		vsAnimator.SetTrigger("enterVS");
+	}
+
+	public void desactivateVSAnim(){
+		vsAnimator.ResetTrigger("enterVS");
 	}
 
 	void changeStateMashing(){
@@ -75,6 +87,16 @@ public class GameManager : MonoBehaviour {
 			yield return new WaitForSeconds(refreshDelayUI);
 		}
 		isCoroutineActive = false;
+	}
+
+	IEnumerator launchVS() {
+		isVSAnimPlaying = true;
+		activateVSAnim ();
+		yield return new WaitForSeconds(1.5f);
+		desactivateVSAnim ();
+		isVSAnimPlaying = false;
+		eventOccuring = true;
+		changeStateMashing ();
 	}
 
 

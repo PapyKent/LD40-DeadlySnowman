@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Item : MonoBehaviour {
-
-
+	
 	public float scoreUpdate = 0;
 	public float speedMultiplier = 0;
 
