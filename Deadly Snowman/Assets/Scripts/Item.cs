@@ -9,6 +9,7 @@ public class Item : MonoBehaviour {
 	public float contentValue = 1;
 
 	public bool gameOver = false;
+	public bool triggerVS = false;
 
 	// Use this for initialization
 	void Start () {

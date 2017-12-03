@@ -25,6 +25,8 @@ public class PlayerManager : MonoBehaviour {
 
 			if (item.gameOver) {
 				gm.endTheGame ();
+			} else if (item.triggerVS) {
+				gm.startCoVS ();
 			}
 		}
 

@@ -45,13 +45,13 @@ public class GameManager : MonoBehaviour {
 		if(Input.GetKeyUp("space")){
 			restartTheGame();
 		}
-
-
-		if(Input.GetKeyUp(KeyCode.A) && !isVSAnimPlaying){			
-			StartCoroutine(launchVS());
-		}
-			
+					
 	
+	}
+
+
+	public void startCoVS(){
+		StartCoroutine(launchVS());
 	}
 		
 	public void activateVSAnim(){
