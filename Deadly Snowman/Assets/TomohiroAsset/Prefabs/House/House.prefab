@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4320250411947618}
   - component: {fileID: 33175649167088438}
   - component: {fileID: 23344273277403070}
+  - component: {fileID: 64578827799085228}
   m_Layer: 0
   m_Name: House
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,4 +86,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1396708654053088}
+  m_Mesh: {fileID: 4300000, guid: 2439b385bdca50147bb3753aff58357c, type: 3}
+--- !u!64 &64578827799085228
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1396708654053088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 2439b385bdca50147bb3753aff58357c, type: 3}
