@@ -55,7 +55,7 @@ MonoBehaviour:
   rollingFaceLimit: 0
   gain: 50
   mashingUI: {fileID: 0}
-  lowAlpha: {r: 1, g: 0.47586206, b: 0, a: 0.25}
-  highAlpha: {r: 1, g: 0.4745098, b: 0, a: 1}
+  lowAlpha: {r: 0.60726637, g: 0.5109213, b: 0.99264705, a: 0.25}
+  highAlpha: {r: 0.17128026, g: 0.37524146, b: 0.9705882, a: 1}
   valueToReach: 500
   gm: {fileID: 0}

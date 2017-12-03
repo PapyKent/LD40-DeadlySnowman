@@ -10,8 +10,8 @@ public class MashingManager : MonoBehaviour {
 	public float rollingFaceLimit;
 	public int gain;
 	public GameObject mashingUI;
-	private Image key1;
-	private Image key2;
+	private RawImage key1;
+	private RawImage key2;
 	public Color lowAlpha = new Color(0.0f, 1.0f, 0.0f, 0.25f);
 	public Color highAlpha = new Color(0.0f, 1.0f, 0.0f, 1.0f);
 
@@ -28,8 +28,8 @@ public class MashingManager : MonoBehaviour {
 	void OnEnable(){
 		gIsDown = false;
 		InvokeRepeating("CheckRollingFaceRate", 0.0f, rollingFaceLimit);
-		key1 = mashingUI.transform.Find("Key1").GetComponent<Image>();
-		key2 = mashingUI.transform.Find("Key2").GetComponent<Image>();
+		key1 = mashingUI.transform.Find("Key1").GetComponent<RawImage>();
+		key2 = mashingUI.transform.Find("Key2").GetComponent<RawImage>();
 		key1.color = highAlpha;
 		key2.color = lowAlpha;
 		currentValue = 0;
