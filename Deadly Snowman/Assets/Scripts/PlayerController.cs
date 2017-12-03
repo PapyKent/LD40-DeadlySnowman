@@ -6,9 +6,12 @@ public class PlayerController : MonoBehaviour {
 
 	/* Public variables */
 	public float HorizontalSensitivity; // how fast the snowball moves left to right
-	public float GrowthRate; // how fast the snowball grows to its target size
+	public float GrowthRate; // how fast the snowball grows to its target size (animation)
 	public float MassFactor; // How much does the mass increase per unit of scale (size)
+	public float[] SizeBoundaries; // the scale values that cause the camera to go to second angle ([0]) and third angle ([1])
+	public float RollGrowRate; // how much of its current size does the ball grow per frame?
 	public GameObject BodyPart;
+	public GameObject Camera;
 
 	/* Private variables */
 	private Rigidbody rb;
@@ -43,8 +46,11 @@ public class PlayerController : MonoBehaviour {
 	public void StickRandomBodyPart()
 	{
 		GameObject temp = Instantiate (BodyPart, gameObject.transform);
+		//temp.transform.localPosition = new Vector3 (0f, 2f, 0f);
+		//temp.transform.localRotation = Random.rotation;
 		temp.transform.position = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y - (gameObject.transform.localScale.y / 2f), gameObject.transform.position.z);
-		temp.transform.Rotate (Vector3.zero - gameObject.transform.eulerAngles, Space.World);
+		temp.transform.Rotate (Vector3.zero - gameObject.transform.eulerAngles, Space.Self);
+
 	}
 	
 	void FixedUpdate () {
@@ -67,7 +73,19 @@ public class PlayerController : MonoBehaviour {
 		Vector3 force = new Vector3 (moveHorizontal * HorizontalSensitivity, 0f, 0f);
 		rb.AddForce (force);
 
+		// Grows the snowball (from rolling)
+		ChangeSize(transform.localScale.y + RollGrowRate);
+
 		// Updates the mass of the snowball
 		rb.mass = 1 + transform.localScale.y * MassFactor;
+
+		// Updates the camera based on the size of the snowball
+		for (int i = SizeBoundaries.Length - 1; i >= 0; i--)
+		{
+			if (transform.localScale.y >= SizeBoundaries [i]) {
+				Camera.GetComponent <CameraController> ().ChangeAngle (i);
+				break;
+			}
+		}
 	}
 }
