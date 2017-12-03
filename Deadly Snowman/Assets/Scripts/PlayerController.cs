@@ -64,11 +64,16 @@ public class PlayerController : MonoBehaviour {
 		//temp.transform.position = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y - (gameObject.transform.localScale.y / 2f), gameObject.transform.position.z);
 		//temp.transform.Rotate (Vector3.zero - gameObject.transform.eulerAngles, Space.Self);
 		GameObject temp = Instantiate(BodyPart);
+		Quaternion save = ballShadow.transform.rotation;
+		ballShadow.transform.rotation = Random.rotation;
+
+
 		temp.transform.position = ballShadow.transform.position + new Vector3(0f, (gameObject.transform.localScale.y / 2), 0f);
 		temp.transform.SetParent (ballShadow.transform);
 		//temp.transform.localPosition = new Vector3(0f, (gameObject.transform.localScale.y / 2), 0f);
 		bodyParts.Add (temp);
 		rotationAdded.Add (ballShadow.transform.rotation);
+		ballShadow.transform.rotation = save;
 	}
 	
 	void FixedUpdate () {
