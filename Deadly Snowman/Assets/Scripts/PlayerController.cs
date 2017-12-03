@@ -6,9 +6,10 @@ public class PlayerController : MonoBehaviour {
 
 	/* Public variables */
 	public float HorizontalSensitivity; // how fast the snowball moves left to right
-	public float GrowthRate; // how fast the snowball grows to its target size
+	public float GrowthRate; // how fast the snowball grows to its target size (animation)
 	public float MassFactor; // How much does the mass increase per unit of scale (size)
 	public float[] SizeBoundaries; // the scale values that cause the camera to go to second angle ([0]) and third angle ([1])
+	public float RollGrowRate; // how much of its current size does the ball grow per frame?
 	public GameObject BodyPart;
 	public GameObject Camera;
 
@@ -71,6 +72,9 @@ public class PlayerController : MonoBehaviour {
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		Vector3 force = new Vector3 (moveHorizontal * HorizontalSensitivity, 0f, 0f);
 		rb.AddForce (force);
+
+		// Grows the snowball (from rolling)
+		ChangeSize(transform.localScale.y + RollGrowRate);
 
 		// Updates the mass of the snowball
 		rb.mass = 1 + transform.localScale.y * MassFactor;
