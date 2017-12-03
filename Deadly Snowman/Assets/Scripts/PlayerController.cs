@@ -8,7 +8,9 @@ public class PlayerController : MonoBehaviour {
 	public float HorizontalSensitivity; // how fast the snowball moves left to right
 	public float GrowthRate; // how fast the snowball grows to its target size
 	public float MassFactor; // How much does the mass increase per unit of scale (size)
+	public float[] SizeBoundaries; // the scale values that cause the camera to go to second angle ([0]) and third angle ([1])
 	public GameObject BodyPart;
+	public GameObject Camera;
 
 	/* Private variables */
 	private Rigidbody rb;
@@ -72,5 +74,14 @@ public class PlayerController : MonoBehaviour {
 
 		// Updates the mass of the snowball
 		rb.mass = 1 + transform.localScale.y * MassFactor;
+
+		// Updates the camera based on the size of the snowball
+		for (int i = SizeBoundaries.Length - 1; i >= 0; i--)
+		{
+			if (transform.localScale.y >= SizeBoundaries [i]) {
+				Camera.GetComponent <CameraController> ().ChangeAngle (i);
+				break;
+			}
+		}
 	}
 }

@@ -8,20 +8,27 @@ public class CameraController : MonoBehaviour {
 	private Vector3 offset;
 
 	public float ChangeViewSpeed;
+	public float[] DistanceModes;
+	public float[] HeightModes;
+	public float[] RotationModes;
 
 	private float targetDistance;
 	private float targetHeight;
 	private float targetRotation;
 
 	// list of camera angles
-	private float[,] cameraAngles = new float[,] {{-15f, 15f, 45f}, {-30f, 30f, 50f}, {-45f, 45f, 55f}};
+	public float[,] cameraAngles;
 	private int currentAngleIndex;
 
 	void Start () {
+		cameraAngles = new float[DistanceModes.Length, DistanceModes.Length];
+		for (int i = 0; i < DistanceModes.Length; i++) {
+			cameraAngles [i, 0] = DistanceModes [i];
+			cameraAngles [i, 1] = HeightModes [i];
+			cameraAngles [i, 2] = RotationModes [i];
+		}
+
 		offset = transform.position - player.transform.position;
-		targetDistance = offset.z;
-		targetHeight = offset.y;
-		targetRotation = transform.eulerAngles.x;
 		currentAngleIndex = 0;
 	}
 
