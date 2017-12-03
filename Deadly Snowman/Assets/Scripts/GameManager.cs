@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
 
 
 	public Animator vsAnimator;
+	public Animator vsAnimator2;
 	public float timer = 0;
 	public float ballSize = 1;
 	public float ballContent = 0;
@@ -59,12 +60,18 @@ public class GameManager : MonoBehaviour {
 		StartCoroutine(launchVS());
 	}
 		
-	public void activateVSAnim(){
-		vsAnimator.SetTrigger("enterVS");
+	public void activateVSAnim(int i){
+		if(i == 1)
+			vsAnimator.SetTrigger("enterVS");
+		if(i == 2)
+			vsAnimator2.SetTrigger("bbiscoming");
 	}
 
-	public void desactivateVSAnim(){
-		vsAnimator.ResetTrigger("enterVS");
+	public void desactivateVSAnim(int i){
+		if(i == 1)
+			vsAnimator.ResetTrigger("enterVS");
+		if(i == 2)
+			vsAnimator2.ResetTrigger("bbiscoming");
 	}
 
 	void changeStateMashing(){
@@ -96,12 +103,15 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator launchVS() {
 		isVSAnimPlaying = true;
-		activateVSAnim ();
+		activateVSAnim (1);
+		activateVSAnim (2);
 		yield return new WaitForSeconds(1.5f);
-		desactivateVSAnim ();
+		desactivateVSAnim (1);
+		changeStateMashing ();
+		desactivateVSAnim (2);
 		isVSAnimPlaying = false;
 		eventOccuring = true;
-		changeStateMashing ();
+
 	}
 
 
