@@ -5,7 +5,7 @@ using UnityEngine;
 public class Item : MonoBehaviour {
 	
 	public float speedMultiplier = 1;
-	public float sizeMultiplier = 1;
+	public float sizeAdder = 1;
 	public float contentValue = 1;
 	public GameObject bodyPart;
 
