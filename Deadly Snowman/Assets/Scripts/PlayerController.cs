@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 
 	/* Public variables */
 	public float HorizontalSensitivity; // how fast the snowball moves left to right
+	public float VerticalSensitivity; // how fast the snowball moves up and down
 	public float GrowthRate; // how fast the snowball grows to its target size (animation)
 	public float MassFactor; // How much does the mass increase per unit of scale (size)
 	public float[] SizeBoundaries; // the scale values that cause the camera to go to second angle ([0]) and third angle ([1])
@@ -85,11 +86,15 @@ public class PlayerController : MonoBehaviour {
 
 			// Updates the movement of the snowball from left to right
 			float moveHorizontal = Input.GetAxis ("Horizontal");
-			Vector3 force = new Vector3 (moveHorizontal * HorizontalSensitivity, 0f, 0f);
+			float moveVertical = Input.GetAxis ("Vertical");
+			Vector3 force = new Vector3 (moveHorizontal * HorizontalSensitivity, 0f, moveVertical * VerticalSensitivity);
 			rb.AddForce (force);
 
-			// Grows the snowball (from rolling)
-			ChangeSize (transform.localScale.y + RollGrowRate);
+			// Grows the snowball (from rolling)\
+			//Debug.Log("VEL: " + rb.velocity);
+			if (Mathf.Abs(rb.velocity.x) > 1.5 || Mathf.Abs(rb.velocity.z) > 1.5) {
+				ChangeSize (transform.localScale.y + (RollGrowRate));
+			}
 
 			// Updates the mass of the snowball
 			rb.mass = 1 + transform.localScale.y * MassFactor;
