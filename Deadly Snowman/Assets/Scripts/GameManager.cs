@@ -33,6 +33,10 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject mashingEvent;
 
+	/* used for pausing the game */
+	private Vector3 tempVelocity;
+	private Vector3 tempAngularVelocity;
+
 	// Use this for initialization
 	void Start () {
 		startTimer = Time.time;
@@ -51,6 +55,7 @@ public class GameManager : MonoBehaviour {
 
 
 	public void startCoVS(){
+		PauseGame ();
 		StartCoroutine(launchVS());
 	}
 		
@@ -129,6 +134,29 @@ public class GameManager : MonoBehaviour {
 
 		player.transform.position = start.transform.position;
 		gameOver = false;
+	}
+
+	/* Pauses the main game. */
+	public void PauseGame() {
+		PlayerController playerScript = player.GetComponent <PlayerController> ();
+		playerScript.ChangeState (PlayerController.STATE_PAUSED);
+		Rigidbody rb = player.GetComponent <Rigidbody> ();
+		tempVelocity = rb.velocity;
+		tempAngularVelocity = rb.angularVelocity;
+		rb.velocity = Vector3.zero;
+		rb.angularVelocity = Vector3.zero;
+		rb.isKinematic = true;
+	}
+
+	public void ResumeGame()
+	{
+		Debug.Log ("HEY");
+		PlayerController playerScript = player.GetComponent <PlayerController> ();
+		playerScript.ChangeState (PlayerController.STATE_GAMEPLAY);
+		Rigidbody rb = player.GetComponent <Rigidbody> ();
+		rb.velocity = tempVelocity;
+		rb.angularVelocity = tempAngularVelocity;
+		rb.isKinematic = false;
 	}
 
 }

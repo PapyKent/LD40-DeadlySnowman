@@ -639,7 +639,7 @@ Prefab:
     - target: {fileID: 224798826631377096, guid: e3e341c55d57f4e45ac491cd3ac52112,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -50.61
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3e341c55d57f4e45ac491cd3ac52112, type: 2}
@@ -822,10 +822,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5040f982c473dde4992a5375752f1a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreUpdate: 0
   speedMultiplier: 0
+  sizeMultiplier: 1
   contentValue: 1
   gameOver: 1
+  triggerVS: 0
 --- !u!23 &1446082056
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1214,10 +1215,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5040f982c473dde4992a5375752f1a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreUpdate: 600
   speedMultiplier: 1.1
+  sizeMultiplier: 1
   contentValue: 1
   gameOver: 0
+  triggerVS: 0
 --- !u!23 &1802861122
 MeshRenderer:
   m_ObjectHideFlags: 0

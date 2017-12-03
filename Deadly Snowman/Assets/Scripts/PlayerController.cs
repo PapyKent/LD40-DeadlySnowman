@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour {
 	/* Variables used for changing the size of the snowball. */
 	private float targetScale = -1f;
 
+	private int state;
+	public const int STATE_GAMEPLAY = 1;
+	public const int STATE_PAUSED = 2;
+
 	void Start ()
 	{
 		rb = GetComponent <Rigidbody> ();
@@ -30,18 +34,21 @@ public class PlayerController : MonoBehaviour {
 		rotationAdded = new ArrayList ();
 		ballShadow = new GameObject ("PlayerShadow");
 		ballShadow.transform.position = transform.position;
+		state = STATE_GAMEPLAY;
 	}
 
 	void Update()
 	{
-		// For testing purposes only, allows you to change the size of the snowball using the X and Z keys.
-		if (Input.GetKeyDown(KeyCode.X))
-			ChangeSize (transform.localScale.y + 2f);
-		if (Input.GetKeyDown(KeyCode.Z))
-			ChangeSize (transform.localScale.y - 2f);
-		// For testing purposes only, allows you to stick body parts using the C key.
-		if (Input.GetKeyDown (KeyCode.C))
-			StickRandomBodyPart ();
+		if (state == STATE_GAMEPLAY) {
+			// For testing purposes only, allows you to change the size of the snowball using the X and Z keys.
+			if (Input.GetKeyDown (KeyCode.X))
+				ChangeSize (transform.localScale.y + 2f);
+			if (Input.GetKeyDown (KeyCode.Z))
+				ChangeSize (transform.localScale.y - 2f);
+			// For testing purposes only, allows you to stick body parts using the C key.
+			if (Input.GetKeyDown (KeyCode.C))
+				StickRandomBodyPart ();
+		}
 	}
 
 	/* Changes the size of the snowball.
@@ -64,49 +71,52 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
-		// Updates the size of the snowball
-		if (transform.localScale.y != targetScale)
-		{
-			float newValue = 0f;
-			if (transform.localScale.y < targetScale)
-			{
-				newValue = Mathf.Clamp (transform.localScale.y + GrowthRate, transform.localScale.y, targetScale);
-			} else
-			{
-				newValue = Mathf.Clamp (transform.localScale.y - GrowthRate, targetScale, transform.localScale.y);
+		if (state == STATE_GAMEPLAY) {
+			// Updates the size of the snowball
+			if (transform.localScale.y != targetScale) {
+				float newValue = 0f;
+				if (transform.localScale.y < targetScale) {
+					newValue = Mathf.Clamp (transform.localScale.y + GrowthRate, transform.localScale.y, targetScale);
+				} else {
+					newValue = Mathf.Clamp (transform.localScale.y - GrowthRate, targetScale, transform.localScale.y);
+				}
+				transform.localScale = new Vector3 (newValue, newValue, newValue);
 			}
-			transform.localScale = new Vector3 (newValue, newValue, newValue);
-		}
 
-		// Updates the movement of the snowball from left to right
-		float moveHorizontal = Input.GetAxis ("Horizontal");
-		Vector3 force = new Vector3 (moveHorizontal * HorizontalSensitivity, 0f, 0f);
-		rb.AddForce (force);
+			// Updates the movement of the snowball from left to right
+			float moveHorizontal = Input.GetAxis ("Horizontal");
+			Vector3 force = new Vector3 (moveHorizontal * HorizontalSensitivity, 0f, 0f);
+			rb.AddForce (force);
 
-		// Grows the snowball (from rolling)
-		ChangeSize(transform.localScale.y + RollGrowRate);
+			// Grows the snowball (from rolling)
+			ChangeSize (transform.localScale.y + RollGrowRate);
 
-		// Updates the mass of the snowball
-		rb.mass = 1 + transform.localScale.y * MassFactor;
+			// Updates the mass of the snowball
+			rb.mass = 1 + transform.localScale.y * MassFactor;
 
-		// Updates the camera based on the size of the snowball
-		for (int i = SizeBoundaries.Length - 1; i >= 0; i--)
-		{
-			if (transform.localScale.y >= SizeBoundaries [i]) {
-				Camera.GetComponent <CameraController> ().ChangeAngle (i);
-				break;
+			// Updates the camera based on the size of the snowball
+			for (int i = SizeBoundaries.Length - 1; i >= 0; i--) {
+				if (transform.localScale.y >= SizeBoundaries [i]) {
+					Camera.GetComponent <CameraController> ().ChangeAngle (i);
+					break;
+				}
+			}
+
+			// Places the ball shadow in the same location as the ball
+			ballShadow.transform.position = transform.position;
+			ballShadow.transform.rotation = transform.rotation;
+			for (int i = 0; i < bodyParts.Count; i++) {
+				GameObject curr = (GameObject)bodyParts [i];
+				Quaternion temp = ballShadow.transform.rotation;
+				ballShadow.transform.rotation = (Quaternion)rotationAdded [i];
+				curr.transform.position = ballShadow.transform.position + new Vector3 (0f, (gameObject.transform.localScale.y / 2), 0f);
+				ballShadow.transform.rotation = temp;
 			}
 		}
+	}
 
-		// Places the ball shadow in the same location as the ball
-		ballShadow.transform.position = transform.position;
-		ballShadow.transform.rotation = transform.rotation;
-		for (int i = 0; i < bodyParts.Count; i++) {
-			GameObject curr = (GameObject)bodyParts [i];
-			Quaternion temp = ballShadow.transform.rotation;
-			ballShadow.transform.rotation = (Quaternion)rotationAdded [i];
-			curr.transform.position = ballShadow.transform.position + new Vector3(0f, (gameObject.transform.localScale.y / 2), 0f);
-			ballShadow.transform.rotation = temp;
-		}
+	public void ChangeState(int state)
+	{
+		this.state = state;
 	}
 }
