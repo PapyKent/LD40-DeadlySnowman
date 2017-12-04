@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour {
 	float getScore(){
 		endTimer = Time.time;
 		timer = (endTimer - startTimer);
-		float score =  (ballSize*5 + ballContent*30);
+		float score =  (ballSize*5);
 		return score;
 	}
 

@@ -927,8 +927,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 1.5, y: 3, z: 1.5}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!95 &95290604542557798
 Animator:
   serializedVersion: 3
@@ -958,7 +958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplier: 1
-  sizeAdder: 1
+  sizeAdder: 2
   contentValue: 1
   bodyPart: {fileID: 1321162227051670, guid: 46de4dd530ed6eb438fd8a3feab01ade, type: 2}
   gameOver: 0

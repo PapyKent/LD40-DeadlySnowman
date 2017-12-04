@@ -214,7 +214,7 @@ public class PlayerController : MonoBehaviour {
 					ChangeSize (targetScale + item.sizeAdder);
 					StickRandomBodyPart (item.bodyPart);
 				} else {
-					Damage (item.sizeAdder);
+					Damage (-item.sizeAdder);
 				}
 
 

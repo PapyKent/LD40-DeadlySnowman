@@ -3523,7 +3523,7 @@ Prefab:
     - target: {fileID: 224567216643103220, guid: 567e518c809c4a644b5428258d1dbebb,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 459
+      value: 482
       objectReference: {fileID: 0}
     - target: {fileID: 224567216643103220, guid: 567e518c809c4a644b5428258d1dbebb,
         type: 2}
@@ -3636,6 +3636,65 @@ Prefab:
     - target: {fileID: 1148328601484462, guid: 567e518c809c4a644b5428258d1dbebb, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224862389611489012, guid: 567e518c809c4a644b5428258d1dbebb,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 26.029999
+      objectReference: {fileID: 0}
+    - target: {fileID: 224862389611489012, guid: 567e518c809c4a644b5428258d1dbebb,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -8.919998
+      objectReference: {fileID: 0}
+    - target: {fileID: 224862389611489012, guid: 567e518c809c4a644b5428258d1dbebb,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -26.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 224862389611489012, guid: 567e518c809c4a644b5428258d1dbebb,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -8.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 224862389611489012, guid: 567e518c809c4a644b5428258d1dbebb,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 142.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 224862389611489012, guid: 567e518c809c4a644b5428258d1dbebb,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 142.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 114686776333557796, guid: 567e518c809c4a644b5428258d1dbebb,
+        type: 2}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114364764489539244, guid: 567e518c809c4a644b5428258d1dbebb,
+        type: 2}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114387124366590540, guid: 567e518c809c4a644b5428258d1dbebb,
+        type: 2}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114609357441935552, guid: 567e518c809c4a644b5428258d1dbebb,
+        type: 2}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114364811688320618, guid: 567e518c809c4a644b5428258d1dbebb,
+        type: 2}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288574547480598, guid: 567e518c809c4a644b5428258d1dbebb, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 567e518c809c4a644b5428258d1dbebb, type: 2}
