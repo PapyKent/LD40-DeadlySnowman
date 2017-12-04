@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 0}
   versusCamera: {fileID: 0}
+  goCamera: {fileID: 0}
   vsAnimator: {fileID: 0}
   vsAnimator2: {fileID: 0}
   timer: 0
