@@ -20,7 +20,7 @@ public class Skier : MonoBehaviour
     {
         Rigidbody rb = GetComponent<Rigidbody>();
         float velocity = rb.velocity.magnitude;
-        Debug.Log(velocity);
+        //Debug.Log(velocity);
 
         if(velocity > speed)
         {
