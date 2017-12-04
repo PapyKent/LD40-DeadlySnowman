@@ -21,10 +21,11 @@ GameObject:
   - component: {fileID: 4320250411947618}
   - component: {fileID: 33175649167088438}
   - component: {fileID: 23344273277403070}
+  - component: {fileID: 114852482556143834}
   - component: {fileID: 64578827799085228}
   m_Layer: 0
   m_Name: House
-  m_TagString: Target
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,10 +95,27 @@ MeshCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1396708654053088}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 1
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 2439b385bdca50147bb3753aff58357c, type: 3}
+--- !u!114 &114852482556143834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1396708654053088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5040f982c473dde4992a5375752f1a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedMultiplier: 0.8
+  sizeAdder: -2
+  contentValue: -2
+  bodyPart: {fileID: 1192819456712880, guid: 606b8c37439d48e42aebbc2678f740df, type: 2}
+  gameOver: 0
+  triggerVS: 0
