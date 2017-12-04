@@ -172,6 +172,30 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		print ("collide with " + other.name);
+
+		switch (other.tag){
+		case "Skier":
+			SoundManager.instance.playPedestrian ();
+			break;
+
+		case "Pedestrian":
+			SoundManager.instance.playPedestrian ();
+			break;
+
+		case "Bodybuilder":
+			SoundManager.instance.playBodyBuilder();
+			break;
+
+		case "Rock":
+			SoundManager.instance.playRock ();
+			break;
+
+		case "House":
+			SoundManager.instance.playHouse ();
+			break;
+	
+		}
+
 		if (other.GetComponent<Item> ()) {
 			Item item = other.GetComponent<Item> ();
 			gm.updateSize (item.sizeAdder);
