@@ -13,7 +13,13 @@ public class BasicAIScript1 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		collidesWithTerrain = false;
+		currentFrames = Random.Range (0, FramesBeforeTurning);
 		gameObject.transform.Rotate(new Vector3(0f, 90f, 0f));
+		if (Random.value >= 0.5) {
+			forward = false;
+			gameObject.transform.Rotate(new Vector3(0f, 180f, 0f));
+		}
+		
 	}
 
 	// Update is called once per frame
@@ -28,7 +34,7 @@ public class BasicAIScript1 : MonoBehaviour {
 			gameObject.transform.position += new Vector3 (-0.025f, 0f, 0f);
 		}
 		currentFrames++;
-		if (currentFrames == FramesBeforeTurning) {
+		if (currentFrames >= FramesBeforeTurning) {
 			turnAround ();
 
 			currentFrames = 0;

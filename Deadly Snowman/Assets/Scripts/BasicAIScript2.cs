@@ -15,7 +15,13 @@ public class BasicAIScript2 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		increment = 360f / NumberOfFramesInCycle;
-		currentAngle = 0f;
+		int randomIncrement = Random.Range (0, NumberOfFramesInCycle);
+		for (int i = 0; i < randomIncrement; i++) {
+			currentAngle += increment;
+			while (currentAngle >= 360)
+				currentAngle -= 360;
+			gameObject.transform.Rotate(new Vector3(0f, -increment, 0f));
+		}
 		currentLocationX = transform.position.x;
 		currentLocationY = transform.position.z;
 	}
