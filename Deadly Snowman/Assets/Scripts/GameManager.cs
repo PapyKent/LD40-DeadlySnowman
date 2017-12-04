@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+	public GameObject gameCamera;
+	public GameObject versusCamera;
+	public GameObject goCamera;
 
 	public Animator vsAnimator;
 	public Animator vsAnimator2;
@@ -24,6 +27,8 @@ public class GameManager : MonoBehaviour {
 	public Text sizeUI;
 	public Text itemsUI;
 
+	public GameObject UI;
+	public Text finalTimeUI;
 	public Text finalScoreUI;
 	public GameObject GOScreen;
 
@@ -53,6 +58,8 @@ public class GameManager : MonoBehaviour {
 		if(Input.GetKeyUp("space")){
 			restartTheGame();
 		}			
+
+		ballSize = (int)player.GetComponent<PlayerController>().getBallSize ();
 	}
 
 
@@ -83,6 +90,7 @@ public class GameManager : MonoBehaviour {
 	void desactivateMashing(){
 		mashingEvent.SetActive (false);
 	}
+		
 
 
 	void updateUIValues(){
@@ -107,6 +115,7 @@ public class GameManager : MonoBehaviour {
 		activateVSAnim (1);
 		activateVSAnim (2);
 		yield return new WaitForSeconds(1.5f);
+		changeCamera ();
 		desactivateVSAnim (1);
 		changeStateMashing ();
 		desactivateVSAnim (2);
@@ -119,7 +128,7 @@ public class GameManager : MonoBehaviour {
 	float getScore(){
 		endTimer = Time.time;
 		timer = (endTimer - startTimer);
-		float score = timer*10 + ballSize*5 + ballContent*300;
+		float score =  (ballSize*5 + ballContent*30);
 		return score;
 	}
 
@@ -133,10 +142,15 @@ public class GameManager : MonoBehaviour {
 		
 
 
-	public void endTheGame(){		
+	public void endTheGame(){
+		changeUIstate ();	
+		changeCameraGO ();	
 		gameOver = true;
 		GOScreen.SetActive (true);
-		float score = timer * 10 +  ballSize * 5 +  ballContent * 300;
+		float score = getScore();
+		endTimer = Time.time;
+		timer = (endTimer - startTimer);
+		finalTimeUI.text = timer.ToString();
 		finalScoreUI.text = score.ToString();
 
 	}
@@ -147,7 +161,23 @@ public class GameManager : MonoBehaviour {
 		startTimer = Time.time;
 		ballSize = 1;
 		ballContent = 0;
+		changeCameraGO ();
 		//repop everything
+	}
+
+	public void changeUIstate(){
+		UI.SetActive (!UI.activeSelf);
+	}
+
+
+	public void changeCamera(){
+		gameCamera.SetActive (!gameCamera.activeSelf);
+		versusCamera.SetActive (!versusCamera.activeSelf);
+	}
+
+	public void changeCameraGO(){
+		gameCamera.SetActive (!gameCamera.activeSelf);
+		goCamera.SetActive (!goCamera.activeSelf);
 	}
 
 	/* Pauses the main game. */

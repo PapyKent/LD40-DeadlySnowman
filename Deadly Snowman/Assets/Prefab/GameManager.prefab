@@ -51,6 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b96071995152214d8731063ab083be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameCamera: {fileID: 0}
+  versusCamera: {fileID: 0}
+  goCamera: {fileID: 0}
+  vsAnimator: {fileID: 0}
+  vsAnimator2: {fileID: 0}
   timer: 0
   ballSize: 1
   ballContent: 0
@@ -61,4 +66,10 @@ MonoBehaviour:
   scoreUI: {fileID: 0}
   sizeUI: {fileID: 0}
   itemsUI: {fileID: 0}
+  finalTimeUI: {fileID: 0}
+  finalScoreUI: {fileID: 0}
+  GOScreen: {fileID: 0}
   refreshDelayUI: 1
+  eventOccuring: 0
+  isVSAnimPlaying: 0
+  mashingEvent: {fileID: 0}
