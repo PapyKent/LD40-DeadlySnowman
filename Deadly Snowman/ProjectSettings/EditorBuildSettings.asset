@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainScene - Quentin.unity
+    guid: 826b2ff763e0c384cbf94405671bd5a0
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: a644a3e6017642f4cb5b5a17853813fe
   - enabled: 1
