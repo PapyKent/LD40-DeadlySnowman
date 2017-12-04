@@ -30,7 +30,7 @@ GameObject:
   - component: {fileID: 82217886455377590}
   m_Layer: 0
   m_Name: SoundManager
-  m_TagString: Untagged
+  m_TagString: Skier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -457,7 +457,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c6d04b0b07ba0f942a27c134f96dbeec, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0222ec00aab83c04290aa0d3557bdf87, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -537,7 +537,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c6d04b0b07ba0f942a27c134f96dbeec, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bd6fa5ae0ee361641a4c8de6b3472249, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -701,7 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pedestrianHitSource: {fileID: 82403469918279916}
   bodyBuilderHitSource: {fileID: 82007831153439192}
-  rockHitSource: {fileID: 82421146751924192}
+  rockHitSource: {fileID: 82548377029796800}
   houseHitSource: {fileID: 82421146751924192}
   shonenSource: {fileID: 82058748764619876}
   musicSource: {fileID: 82310326514996102}

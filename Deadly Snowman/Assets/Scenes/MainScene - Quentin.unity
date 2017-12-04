@@ -2137,12 +2137,12 @@ Prefab:
     - target: {fileID: 224567216643103220, guid: 567e518c809c4a644b5428258d1dbebb,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 407.5
+      value: 459
       objectReference: {fileID: 0}
     - target: {fileID: 224567216643103220, guid: 567e518c809c4a644b5428258d1dbebb,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 204.5
+      value: 202
       objectReference: {fileID: 0}
     - target: {fileID: 224567216643103220, guid: 567e518c809c4a644b5428258d1dbebb,
         type: 2}
@@ -4145,10 +4145,6 @@ Prefab:
     - target: {fileID: 4263441932569960, guid: 31cec99abf5055d4b8e31688ff56a5ca, type: 2}
       propertyPath: m_RootOrder
       value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 1845070592222172, guid: 31cec99abf5055d4b8e31688ff56a5ca, type: 2}
-      propertyPath: m_TagString
-      value: Skier
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31cec99abf5055d4b8e31688ff56a5ca, type: 2}
@@ -9129,6 +9125,15 @@ Prefab:
       propertyPath: m_Name
       value: Rock4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1529469323908636, guid: 4122a2a0332f58c49b663a8c36e0572f, type: 2}
+      propertyPath: m_TagString
+      value: Rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 64271858522985754, guid: 4122a2a0332f58c49b663a8c36e0572f,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4122a2a0332f58c49b663a8c36e0572f, type: 2}
   m_IsPrefabParent: 0
@@ -9818,6 +9823,15 @@ Prefab:
     - target: {fileID: 4320250411947618, guid: 6249eebc80c9a454ab9feb9c8f169deb, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396708654053088, guid: 6249eebc80c9a454ab9feb9c8f169deb, type: 2}
+      propertyPath: m_TagString
+      value: House
+      objectReference: {fileID: 0}
+    - target: {fileID: 64578827799085228, guid: 6249eebc80c9a454ab9feb9c8f169deb,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6249eebc80c9a454ab9feb9c8f169deb, type: 2}
