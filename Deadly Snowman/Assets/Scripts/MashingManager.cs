@@ -20,7 +20,7 @@ public class MashingManager : MonoBehaviour {
 	public float rewardValue = 10;
 
 	public GameManager gm;
-	// Use this for initialization
+		// Use this for initialization
 	void Start ()
 	{
 		
@@ -45,11 +45,12 @@ public class MashingManager : MonoBehaviour {
 			currentValue = 0;
 			gm.eventOccuring = false;
 			mashingUI.SetActive (false);
+
 			SoundManager.instance.stopShonen ();
-			SoundManager.instance.unpauseBGMusic ();
-			gm.changeCamera ();
-			gm.updateContent (rewardValue);
-			gm.ResumeGame ();
+			SoundManager.instance.playBodyBuilder ();	
+			gm.activateVSEndFightAnim ();
+			StartCoroutine (launchEndVS());
+
 		}
 
 
@@ -80,5 +81,15 @@ public class MashingManager : MonoBehaviour {
 			key2.color = lowAlpha;
 		}
 		//Terminator.GetTerminator().isRecharging = false;
+	}
+
+	IEnumerator launchEndVS() {	
+		
+		yield return new WaitForSeconds(2.0f);
+		SoundManager.instance.unpauseBGMusic ();
+		gm.changeCamera ();
+		gm.updateContent (rewardValue);
+		gm.ResumeGame ();
+		gm.changeUIstate ();
 	}
 }

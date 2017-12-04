@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour {
 
 		switch (other.tag){
 		case "Skier":
-			SoundManager.instance.playPedestrian ();
+			SoundManager.instance.playSkier ();
 			break;
 
 		case "Pedestrian":

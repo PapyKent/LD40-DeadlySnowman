@@ -57,7 +57,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: aa8ad974258029c48af60ae4ad927b37, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -297,9 +297,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 21ace81e440853b4580a7acc3fcac164, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c4d0c50bd8a4bc2478c2f70d58517249, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 0.525
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -377,7 +377,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5ae252965c49d6a4db21ae5351657a5e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -617,7 +617,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 17be09ac8450ba64fb012f185695e032, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -699,13 +699,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ca6a492d83e7a4aa30050b6d900612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pedestrianHitSource: {fileID: 82421146751924192}
-  bodyBuilderHitSource: {fileID: 82421146751924192}
+  pedestrianHitSource: {fileID: 82403469918279916}
+  bodyBuilderHitSource: {fileID: 82007831153439192}
   rockHitSource: {fileID: 82421146751924192}
   houseHitSource: {fileID: 82421146751924192}
   shonenSource: {fileID: 82058748764619876}
   musicSource: {fileID: 82310326514996102}
   shonenOpeningSource: {fileID: 82217886455377590}
-  skierHitSource: {fileID: 82548377029796800}
+  skierHitSource: {fileID: 82999770113532120}
   lowPitchRange: 0.95
   highPitchRange: 1.05
