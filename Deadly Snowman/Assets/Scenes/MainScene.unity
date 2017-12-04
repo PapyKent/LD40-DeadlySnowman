@@ -2208,40 +2208,20 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 224237914341664366, guid: 567e518c809c4a644b5428258d1dbebb,
+    - target: {fileID: 114029687001382638, guid: 567e518c809c4a644b5428258d1dbebb,
         type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224237914341664366, guid: 567e518c809c4a644b5428258d1dbebb,
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1206791812}
+    - target: {fileID: 114624992974033398, guid: 567e518c809c4a644b5428258d1dbebb,
         type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1206791812}
     - target: {fileID: 224637412760118160, guid: 567e518c809c4a644b5428258d1dbebb,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114624992974033398, guid: 567e518c809c4a644b5428258d1dbebb,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1206791812}
-    - target: {fileID: 114624992974033398, guid: 567e518c809c4a644b5428258d1dbebb,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: newGameButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 114029687001382638, guid: 567e518c809c4a644b5428258d1dbebb,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1206791812}
-    - target: {fileID: 114029687001382638, guid: 567e518c809c4a644b5428258d1dbebb,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: exitGameButton
+      value: -50.61
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 567e518c809c4a644b5428258d1dbebb, type: 2}
