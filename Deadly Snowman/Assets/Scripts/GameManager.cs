@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyUp("space")){
-			restartTheGame();
+			//restartTheGame();
 		}			
 
 		ballSize = (int)player.GetComponent<PlayerController>().getBallSize ();

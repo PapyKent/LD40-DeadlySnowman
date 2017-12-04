@@ -3524,7 +3524,7 @@ Prefab:
     - target: {fileID: 224567216643103220, guid: 567e518c809c4a644b5428258d1dbebb,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 482
+      value: 459
       objectReference: {fileID: 0}
     - target: {fileID: 224567216643103220, guid: 567e518c809c4a644b5428258d1dbebb,
         type: 2}
@@ -3636,7 +3636,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1148328601484462, guid: 567e518c809c4a644b5428258d1dbebb, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224862389611489012, guid: 567e518c809c4a644b5428258d1dbebb,
         type: 2}
@@ -3696,6 +3696,31 @@ Prefab:
     - target: {fileID: 1288574547480598, guid: 567e518c809c4a644b5428258d1dbebb, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114572018231237698, guid: 567e518c809c4a644b5428258d1dbebb,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114572018231237698, guid: 567e518c809c4a644b5428258d1dbebb,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114572018231237698, guid: 567e518c809c4a644b5428258d1dbebb,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114727264246952564, guid: 567e518c809c4a644b5428258d1dbebb,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.9541107
+      objectReference: {fileID: 0}
+    - target: {fileID: 114727264246952564, guid: 567e518c809c4a644b5428258d1dbebb,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.20588237
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 567e518c809c4a644b5428258d1dbebb, type: 2}
@@ -4956,7 +4981,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 671299601}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -12636,6 +12661,11 @@ Prefab:
       propertyPath: gm
       value: 
       objectReference: {fileID: 2136842449}
+    - target: {fileID: 114156026731815932, guid: 7ac5b2067b995094f848d9f82c91200b,
+        type: 2}
+      propertyPath: MassFactor
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ac5b2067b995094f848d9f82c91200b, type: 2}
   m_IsPrefabParent: 0
