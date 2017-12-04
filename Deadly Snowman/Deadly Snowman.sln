@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deadly Snowman", "Assembly-CSharp.csproj", "{AC4FCD58-CF6F-5970-80F6-44FDBDDEBC69}"
 EndProject
+Project("{CADEE6E1-382E-2E50-6BBF-11B765A28E69}") = "Deadly Snowman", "Assembly-UnityScript.unityproj", "{F882A438-2BFE-F05C-652E-8A62A8815B2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deadly Snowman", "Assembly-CSharp-Editor.csproj", "{69F23077-57DA-B97D-8A12-38AFC395003E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{AC4FCD58-CF6F-5970-80F6-44FDBDDEBC69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC4FCD58-CF6F-5970-80F6-44FDBDDEBC69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC4FCD58-CF6F-5970-80F6-44FDBDDEBC69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F882A438-2BFE-F05C-652E-8A62A8815B2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F882A438-2BFE-F05C-652E-8A62A8815B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F882A438-2BFE-F05C-652E-8A62A8815B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F882A438-2BFE-F05C-652E-8A62A8815B2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69F23077-57DA-B97D-8A12-38AFC395003E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69F23077-57DA-B97D-8A12-38AFC395003E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69F23077-57DA-B97D-8A12-38AFC395003E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69F23077-57DA-B97D-8A12-38AFC395003E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
