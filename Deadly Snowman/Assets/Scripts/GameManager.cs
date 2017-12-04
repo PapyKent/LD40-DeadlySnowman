@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour {
 
 	public Animator vsAnimator;
 	public Animator vsAnimator2;
+
+	public Animator bodybuilderAnimator;
+	public Animator snowballAnimator;
+
+
 	public float timer = 0;
 	public float ballSize = 1;
 	public float ballContent = 0;
@@ -75,6 +80,17 @@ public class GameManager : MonoBehaviour {
 			vsAnimator2.SetTrigger("bbiscoming");
 	}
 
+
+	public void activateVSEndFightAnim(){				
+		bodybuilderAnimator.SetTrigger ("FinishBattle");
+		snowballAnimator.SetTrigger ("FinishBattle");		
+	}
+
+	public void desactivateVSEndFightAnim(){				
+		bodybuilderAnimator.ResetTrigger ("FinishBattle");
+		snowballAnimator.ResetTrigger ("FinishBattle");		
+	}
+
 	public void desactivateVSAnim(int i){
 		if(i == 1)
 			vsAnimator.ResetTrigger("enterVS");
@@ -111,6 +127,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	IEnumerator launchVS() {
+		changeUIstate ();
 		isVSAnimPlaying = true;
 		SoundManager.instance.pauseBGMusic ();
 		SoundManager.instance.playOpeningShonen ();
@@ -204,6 +221,7 @@ public class GameManager : MonoBehaviour {
 		rb.velocity = tempVelocity;
 		rb.angularVelocity = tempAngularVelocity;
 		rb.isKinematic = false;
+		desactivateVSEndFightAnim ();
 	}
 
 }
