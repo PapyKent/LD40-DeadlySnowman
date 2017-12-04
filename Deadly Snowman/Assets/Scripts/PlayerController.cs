@@ -46,12 +46,12 @@ public class PlayerController : MonoBehaviour {
 		if (state == STATE_GAMEPLAY) {
 			// For testing purposes only, allows you to change the size of the snowball using the X and Z keys.
 			if (Input.GetKeyDown (KeyCode.X))
-				//ChangeSize (transform.localScale.y + 2f);
+				ChangeSize (transform.localScale.y + 2f);
 			if (Input.GetKeyDown (KeyCode.Z))
-				//ChangeSize (transform.localScale.y - 2f);
+				ChangeSize (transform.localScale.y - 2f);
 			// For testing purposes only, allows you to stick body parts using the C key.
-			if (Input.GetKeyDown (KeyCode.D)) {
-				//Damage (3f);
+			if (Input.GetKeyDown (KeyCode.Y)) {
+				Damage (3f);
 			}
 		}
 	}
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour {
 
         
 		temp.transform.SetParent (ballShadow.transform);
-		temp.transform.localPosition = new Vector3(0f, 2f, 0f);
+		temp.transform.localPosition = new Vector3(0f, gameObject.transform.localScale.y / 2f - 2f , 0f);
 		bodyParts.Add (temp);
 		rotationAdded.Add (ballShadow.transform.rotation);
 		ballShadow.transform.rotation = save;
@@ -84,7 +84,8 @@ public class PlayerController : MonoBehaviour {
 
 	public void Damage(float value)
 	{
-		Collider thisCollider = gameObject.GetComponent <Collider> ();
+		Debug.Log ("Called?");
+		//Collider thisCollider = gameObject.GetComponent <Collider> ();
 		ChangeSize (targetScale - value);
 		float currentScale = gameObject.transform.localScale.y;
 		for (int i = 0; i < bodyParts.Count; i++) {
@@ -96,8 +97,8 @@ public class PlayerController : MonoBehaviour {
 				part.transform.position = ballShadow.transform.position;
 				part.transform.rotation = Random.rotation;
 
-				Collider partC = part.GetComponent <Collider> ();
-				Physics.IgnoreCollision (partC, thisCollider);
+				//Collider partC = part.GetComponent <Collider> ();
+				//Physics.IgnoreCollision (partC, thisCollider);
 
 				Rigidbody prb = part.AddComponent <Rigidbody> ();
 				Vector3 force = new Vector3 (Random.Range(-200f, 200f), Random.Range(800f, 1200f), Random.Range(-200f, 200f));
@@ -154,7 +155,7 @@ public class PlayerController : MonoBehaviour {
 				GameObject curr = (GameObject)bodyParts [i];
 				Quaternion temp = ballShadow.transform.rotation;
 				ballShadow.transform.rotation = (Quaternion)rotationAdded [i];
-				curr.transform.position = ballShadow.transform.position + new Vector3 (0f, (gameObject.transform.localScale.y / 4), 0f);
+				curr.transform.position = ballShadow.transform.position + new Vector3 (0f, (gameObject.transform.localScale.y / 2 - 2f), 0f);
 				ballShadow.transform.rotation = temp;
 			}
 		}
