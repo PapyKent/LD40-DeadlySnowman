@@ -102,6 +102,7 @@
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerManager.cs" />
      <Compile Include="Assets\TomohiroAsset\Scripts\BlowAway.cs" />
+     <Compile Include="Assets\TomohiroAsset\Scripts\FollowSnowBall.cs" />
      <Compile Include="Assets\TomohiroAsset\Scripts\Roll.cs" />
      <Compile Include="Assets\TomohiroAsset\Scripts\Skier.cs" />
      <None Include="Assets\Fantasy Skybox FREE\Readme.txt" />
@@ -137,6 +138,22 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.SpatialTracking">
+<<<<<<< HEAD
+ <HintPath>C:/Program Files/Unity2017_2/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="GETween">
+ <HintPath>C:/Users/ivergNotebookPC/Documents/GitHub/test/LD40-DeadlySnowman/Deadly Snowman/Assets/GUI Animator/Common/Plugins/GETween.dll</HintPath>
+ </Reference>
+ <Reference Include="GUIAnimatorFREE">
+ <HintPath>C:/Users/ivergNotebookPC/Documents/GitHub/test/LD40-DeadlySnowman/Deadly Snowman/Assets/GUI Animator/GUI Animator FREE/Plugins/GUIAnimatorFREE.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Users/ivergNotebookPC/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@1.0.1/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Purchasing">
+ <HintPath>C:/Users/ivergNotebookPC/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@1.0.1/UnityEngine.Purchasing.dll</HintPath>
+ </Reference>
+=======
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="GETween">
@@ -151,6 +168,7 @@
  <Reference Include="UnityEngine.Purchasing">
  <HintPath>C:/Users/Quentin/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@1.0.1/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
+>>>>>>> d85e920a17ad32668dd28540335aa17e6e98e87d
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
