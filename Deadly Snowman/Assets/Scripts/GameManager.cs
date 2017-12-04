@@ -112,12 +112,14 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator launchVS() {
 		isVSAnimPlaying = true;
+		SoundManager.instance.playOpeningShonen ();
 		activateVSAnim (1);
 		activateVSAnim (2);
 		yield return new WaitForSeconds(1.5f);
 		changeCamera ();
 		desactivateVSAnim (1);
 		changeStateMashing ();
+		SoundManager.instance.playShonen ();
 		desactivateVSAnim (2);
 		isVSAnimPlaying = false;
 		eventOccuring = true;

@@ -101,6 +101,7 @@
      <Compile Include="Assets\Scripts\MashingManager.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerManager.cs" />
+     <Compile Include="Assets\Scripts\SoundManager.cs" />
      <Compile Include="Assets\TomohiroAsset\Scripts\BlowAway.cs" />
      <Compile Include="Assets\TomohiroAsset\Scripts\DestroyInGivenSecond.cs" />
      <Compile Include="Assets\TomohiroAsset\Scripts\FollowSnowBall.cs" />
