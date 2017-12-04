@@ -46,12 +46,12 @@ public class PlayerController : MonoBehaviour {
 		if (state == STATE_GAMEPLAY) {
 			// For testing purposes only, allows you to change the size of the snowball using the X and Z keys.
 			if (Input.GetKeyDown (KeyCode.X))
-				ChangeSize (transform.localScale.y + 2f);
+				//ChangeSize (transform.localScale.y + 2f);
 			if (Input.GetKeyDown (KeyCode.Z))
-				ChangeSize (transform.localScale.y - 2f);
+				//ChangeSize (transform.localScale.y - 2f);
 			// For testing purposes only, allows you to stick body parts using the C key.
 			if (Input.GetKeyDown (KeyCode.D)) {
-				Damage (3f);
+				//Damage (3f);
 			}
 		}
 	}
