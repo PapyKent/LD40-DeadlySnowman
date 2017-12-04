@@ -165,6 +165,10 @@ public class PlayerController : MonoBehaviour {
 		this.state = state;
 	}
 
+	public float getBallSize(){
+		return gameObject.transform.localScale.y;
+	}
+
 
 	void OnTriggerEnter(Collider other) {
 		print ("collide with " + other.name);

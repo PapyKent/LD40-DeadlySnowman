@@ -17,7 +17,7 @@ public class MashingManager : MonoBehaviour {
 
 	int currentValue = 0;
 	public int valueToReach = 500;
-
+	public float rewardValue = 10;
 
 	public GameManager gm;
 	// Use this for initialization
@@ -46,6 +46,7 @@ public class MashingManager : MonoBehaviour {
 			gm.eventOccuring = false;
 			mashingUI.SetActive (false);
 			gm.changeCamera ();
+			gm.updateContent (rewardValue);
 			gm.ResumeGame ();
 		}
 
