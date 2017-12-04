@@ -45,6 +45,8 @@ public class MashingManager : MonoBehaviour {
 			currentValue = 0;
 			gm.eventOccuring = false;
 			mashingUI.SetActive (false);
+			SoundManager.instance.stopShonen ();
+			SoundManager.instance.unpauseBGMusic ();
 			gm.changeCamera ();
 			gm.updateContent (rewardValue);
 			gm.ResumeGame ();
