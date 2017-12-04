@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour {
 	public Text sizeUI;
 	public Text itemsUI;
 
+	public Text finalTimeUI;
 	public Text finalScoreUI;
 	public GameObject GOScreen;
 
@@ -143,6 +144,9 @@ public class GameManager : MonoBehaviour {
 		gameOver = true;
 		GOScreen.SetActive (true);
 		float score = getScore();
+		endTimer = Time.time;
+		timer = (endTimer - startTimer);
+		finalTimeUI.text = timer.ToString();
 		finalScoreUI.text = score.ToString();
 
 	}
