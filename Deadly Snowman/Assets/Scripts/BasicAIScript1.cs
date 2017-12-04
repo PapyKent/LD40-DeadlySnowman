@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BasicAIScript1 : MonoBehaviour {
-
-	public GameObject Terrain;
+	
 	public int FramesBeforeTurning;
 
 	private bool collidesWithTerrain;
@@ -40,21 +39,5 @@ public class BasicAIScript1 : MonoBehaviour {
 	void turnAround() {
 		gameObject.transform.Rotate(new Vector3(0f, 180f, 0f));
 		forward = !forward;
-	}
-
-	void OnTriggerEnter(Collider other)
-	{
-		if (other == Terrain.GetComponent <Collider> ())
-		{
-			collidesWithTerrain = true;
-		}
-	}
-
-	void OnTriggerExit(Collider other)
-	{
-		if (other == Terrain.GetComponent <Collider> ())
-		{
-			collidesWithTerrain = false;
-		}
 	}
 }
