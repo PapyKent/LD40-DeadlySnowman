@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/MainScene.unity
+=======
+- path: Assets/Scenes/MainScene - Quentin.unity
+>>>>>>> e91e729af1cc35076525fecb5d26fea621112f46
   isLoaded: 1
   isActive: 1

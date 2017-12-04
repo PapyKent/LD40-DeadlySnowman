@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+	public GameObject gameCamera;
+	public GameObject versusCamera;
 
 	public Animator vsAnimator;
 	public Animator vsAnimator2;
@@ -107,6 +109,7 @@ public class GameManager : MonoBehaviour {
 		activateVSAnim (1);
 		activateVSAnim (2);
 		yield return new WaitForSeconds(1.5f);
+		changeCamera ();
 		desactivateVSAnim (1);
 		changeStateMashing ();
 		desactivateVSAnim (2);
@@ -148,6 +151,12 @@ public class GameManager : MonoBehaviour {
 		ballSize = 1;
 		ballContent = 0;
 		//repop everything
+	}
+
+
+	public void changeCamera(){
+		gameCamera.SetActive (!gameCamera.activeSelf);
+		versusCamera.SetActive (!versusCamera.activeSelf);
 	}
 
 	/* Pauses the main game. */
