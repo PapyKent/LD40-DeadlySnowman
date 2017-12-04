@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour {
 
         
 		temp.transform.SetParent (ballShadow.transform);
-		temp.transform.localPosition = new Vector3(0f, 2f, 0f);
+		temp.transform.localPosition = new Vector3(0f, gameObject.transform.localScale.y / 2f - 2f , 0f);
 		bodyParts.Add (temp);
 		rotationAdded.Add (ballShadow.transform.rotation);
 		ballShadow.transform.rotation = save;
@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour {
 				GameObject curr = (GameObject)bodyParts [i];
 				Quaternion temp = ballShadow.transform.rotation;
 				ballShadow.transform.rotation = (Quaternion)rotationAdded [i];
-				curr.transform.position = ballShadow.transform.position + new Vector3 (0f, (gameObject.transform.localScale.y / 4), 0f);
+				curr.transform.position = ballShadow.transform.position + new Vector3 (0f, (gameObject.transform.localScale.y / 2 - 2f), 0f);
 				ballShadow.transform.rotation = temp;
 			}
 		}
