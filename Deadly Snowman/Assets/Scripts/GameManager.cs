@@ -112,6 +112,7 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator launchVS() {
 		isVSAnimPlaying = true;
+		SoundManager.instance.pauseBGMusic ();
 		SoundManager.instance.playOpeningShonen ();
 		activateVSAnim (1);
 		activateVSAnim (2);

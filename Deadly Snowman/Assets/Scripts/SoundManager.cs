@@ -27,7 +27,20 @@ public class SoundManager : MonoBehaviour {
 			Destroy (gameObject);
 		}
 		DontDestroyOnLoad (gameObject);
+
+
 	}
+
+
+	public void pauseBGMusic(){
+		musicSource.Pause ();
+	}
+
+
+	public void unpauseBGMusic(){
+		musicSource.UnPause ();
+	}
+
 
 	public void playPedestrian(){
 		RandomizeSfx (pedestrianHitSource);
